@@ -31,27 +31,19 @@ class SpreadsheetConverter():
         with open(csvPath) as csvFile:
             csvReader = csv.DictReader(csvFile)
             for rows in csvReader:
-                firstName = rows['first_name']
-                data[firstName] = rows
+                person = rows['first_name']
+                data[person] = rows
         with open(jsonPath, 'w') as jsonFile:
             jsonFile.write(json.dumps(data, indent=4))
-    
-    def iterateJson(self):
+
         with open(self.Path, 'r') as toPrettify:
             jsonify = json.load(toPrettify)
-            for key in range(len(jsonify)):
-                firstName = key[firstName]['first_name']
-                lastName = key[firstName]['last_name']
-                company = key[firstName]['company']
-                email = key[firstName]['email']
-                contact = key[firstName]['contact']
-                risk = key[firstName]['Risk']
-                status = key[firstName]['Status']
-            print(firstName, lastName, company, email, contact, risk, status)
+            for key in range(len(jsonify[{first_name}])):
+                first_name = key['first_name']
+                print(first_name)
                 
-            
-        
+
+
 if __name__ == '__main__':
-    SSC = SpreadsheetConverter()
-    SSC.converter()
-    SSC.iterateJson()
+    S = SpreadsheetConverter()
+    S.converter()

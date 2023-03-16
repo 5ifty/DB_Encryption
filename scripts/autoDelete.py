@@ -13,6 +13,7 @@ class Delete():
     def deleting(toDelete =  r'C:/Users/user/Documents/DB_Encryption/output/convertedData.json'):
         if os.path.exists(toDelete):
             os.remove(toDelete)
+            print('Unencrypted Data Purged')
         else:
             print('This file does not exist')
         

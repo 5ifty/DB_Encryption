@@ -8,7 +8,7 @@ class DB():
         self.connection = mysql.connector.connect(
             host = 'localhost',
             user = 'root',
-            password = '',
+            password = 'BD9vyfrx',
             database = 'collegedatabase'
         )
         if self.connection.is_connected():
@@ -24,3 +24,5 @@ if __name__ == '__main__':
     db = DB()
     db.databaseConnection()
     db.createTables()
+
+# This should be useful for tomorrow - https://stackoverflow.com/questions/40450591/converting-json-to-sql-table
