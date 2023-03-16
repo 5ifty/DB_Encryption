@@ -36,11 +36,18 @@ class SpreadsheetConverter():
         with open(jsonPath, 'w') as jsonFile:
             jsonFile.write(json.dumps(data, indent=4))
 
-        with open(self.Path, 'r') as toPrettify:
-            jsonify = json.load(toPrettify)
-            for key in range(len(jsonify[{first_name}])):
-                first_name = key['first_name']
-                print(first_name)
+        with open(self.Path, 'r') as jsonFile:
+            iterateJson = json.load(jsonFile)
+            for first_name in iterateJson:
+                openDict = iterateJson[first_name]
+                firstName = openDict['first_name']
+                lastName = openDict['last_name']
+                company = openDict['Company']
+                email = openDict['email']
+                risk = openDict['Risk']
+                contact = openDict['contact']
+                status = openDict['Status']
+                print(f'{firstName, lastName, company, email, risk, contact, status}')
                 
 
 
