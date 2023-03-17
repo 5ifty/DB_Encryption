@@ -53,4 +53,3 @@ class SpreadsheetConverter():
 
 if __name__ == '__main__':
     S = SpreadsheetConverter()
-    S.converter()
