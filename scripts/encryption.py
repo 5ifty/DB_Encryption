@@ -18,8 +18,8 @@ class FileEncryption():
         return Fernet.generate_key()
     
     def encryptJson(self, encryptionKey=None):
-        InputPath = r'C:/Users/user/Documents/DB_Encryption/output/convertedData.json'
-        if os.path.exists(InputPath) == 'False':
+        InputPath = r'C:\Users\oem\Documents\DB_Encryption\output\convertedData.json'
+        if not os.path.exists(InputPath):
             with open(InputPath, 'w+') as noFile:
                 pass
         else:
@@ -29,12 +29,12 @@ class FileEncryption():
                 print(f'Your encryption Key is, {encryptionKey}\nPlease keep this for reference')
                 encryptThis = Fernet(encryptionKey)
                 encryptionProcess = encryptThis.encrypt(preEncrypedData)
-                outputPath = r'C:/Users/user/Documents/DB_Encryption/output/encryptedData.json'
+                outputPath = r'C:\Users\oem\Documents\DB_Encryption\output\encryptedData.json'
                 with open(outputPath, 'wb') as encryptedJson:
                     encryptedJson.write(encryptionProcess)
                     print(f'Data Encrypted in {outputPath}')
             # Parsing the Key into a .json file to keep from getting an invalid token error:
-            with open(r'C:\Users\user\Documents\DB_Encryption\output\encryptionKey.json', 'w+') as encrpytionKeyOutput:
+            with open(r'C:\Users\oem\Documents\DB_Encryption\output\encryptionKey.json', 'w+') as encrpytionKeyOutput:
                 toDump = {
                     'key': base64.b64encode(encryptionKey).decode()
                 }
