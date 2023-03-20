@@ -77,17 +77,16 @@ class DB():
             self.connection.close()
     
     def queryDatabase(self, name):
-        self.connection.connect()
         cursor = self.connection.cursor()
-        query = f"SELECT customers_id.customer_id, customers_id.first_name, customers_id.last_name, email.email, contact.contact, Company.Company, Status.Status, Risk.Risk FROM customers_id \
-         JOIN first_name ON customers_id.customer_id = first_name.customer_id \
-         JOIN last_name ON customers_id.customer_id = last_name.customer_id \
-         JOIN email ON customers_id.customer_id = email.customer_id \
-         JOIN contact ON customers_id.customer_id = contact.customer_id \
-         JOIN Company ON customers_id.customer_id = Company.customer_id \
-         JOIN Status ON customers_id.customer_id = Status.customer_id \
-         JOIN Risk ON customers_id.customer_id = Risk.customer_id \
-         WHERE customers_id.first_name='{name}'"
+        query = f"SELECT customers_id.id, customers_id.first_name, customers_id.last_name, email.email, contact.contact, Company.Company, Status.Status, Risk.Risk FROM customers_id \
+        JOIN first_name ON customers_id.id = first_name.customer_id \
+        JOIN last_name ON customers_id.id = last_name.customer_id \
+        JOIN email ON customers_id.id = email.customer_id \
+        JOIN contact ON customers_id.id = contact.customer_id \
+        JOIN Company ON customers_id.id = Company.customer_id \
+        JOIN Status ON customers_id.id = Status.customer_id \
+        JOIN Risk ON customers_id.id = Risk.customer_id \
+        WHERE customers_id.first_name='{name}'"
 
         cursor.execute(query)
         results = cursor.fetchall()
@@ -95,6 +94,7 @@ class DB():
             return row
         cursor.close()
         self.connection.close()
+
 
 
 

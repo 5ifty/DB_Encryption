@@ -56,6 +56,7 @@ class Main():
                 db = DB()
                 name = input("Please enter the customer's first name:")
                 dbQuery = db.queryDatabase(name)
+                print(dbQuery)
         if userInput == 4:
             userInput = input('Please enter the security Key to access this')
             if userInput != password:
