@@ -6,8 +6,8 @@ class Decryption():
     def __init__(self) -> None:
         pass
     
-    def Decrypt(self, toDecryptPath = r'C:\Users\oem\Documents\DB_Encryption\output\encryptedData.json'):
-        with open(r'C:\Users\oem\Documents\DB_Encryption\output\encryptionKey.json') as trueEncryptionKey:
+    def Decrypt(self, toDecryptPath = r'C:\Users\user\Documents\DB_Encryption\output\encryptedData.json'):
+        with open(r'C:\Users\user\Documents\DB_Encryption\output\encryptionKey.json') as trueEncryptionKey:
             for line in trueEncryptionKey:
                 key = json.loads(line)['key']
                 key = base64.b64decode(key)  # decode the base64-encoded key
@@ -16,7 +16,7 @@ class Decryption():
             encryptedData = toDecrypt.read()
             decryptThis = Fernet(key)
             decryptedData = decryptThis.decrypt(encryptedData)
-            outputPath = r'C:\Users\oem\Documents\DB_Encryption\output\decryptedData.json'
+            outputPath = r'C:\Users\user\Documents\DB_Encryption\output\decryptedData.json'
             with open(outputPath, 'wb') as decryptedJson:
                 decryptedJson.write(decryptedData)
                 print(f'Data Decrypted in {outputPath}')
