@@ -20,7 +20,6 @@ class Decryption():
             with open(outputPath, 'wb') as decryptedJson:
                 decryptedJson.write(decryptedData)
                 print(f'Data Decrypted in {outputPath}')
-        print(key)
 
 
 
