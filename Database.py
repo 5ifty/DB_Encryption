@@ -14,9 +14,34 @@ class DB():
             print('Connected!')
         else:
             print(':(')
+        
 
     def parseToDatabase(self):
         cursor = self.connection.cursor()
+         # Create customers_id table
+        cursor.execute("CREATE TABLE IF NOT EXISTS customers_id (id INT AUTO_INCREMENT PRIMARY KEY, Status VARCHAR(255))")
+
+        # Create first_name table
+        cursor.execute("CREATE TABLE IF NOT EXISTS first_name (id INT AUTO_INCREMENT PRIMARY KEY, customer_id INT, first_name VARCHAR(255), FOREIGN KEY (customer_id) REFERENCES customers_id(id))")
+
+        # Create last_name table
+        cursor.execute("CREATE TABLE IF NOT EXISTS last_name (id INT AUTO_INCREMENT PRIMARY KEY, customer_id INT, last_name VARCHAR(255), FOREIGN KEY (customer_id) REFERENCES customers_id(id))")
+
+        # Create email table
+        cursor.execute("CREATE TABLE IF NOT EXISTS email (id INT AUTO_INCREMENT PRIMARY KEY, customer_id INT, email VARCHAR(255), FOREIGN KEY (customer_id) REFERENCES customers_id(id))")
+
+        # Create contact table
+        cursor.execute("CREATE TABLE IF NOT EXISTS contact (id INT AUTO_INCREMENT PRIMARY KEY, customer_id INT, contact VARCHAR(255), FOREIGN KEY (customer_id) REFERENCES customers_id(id))")
+
+        # Create Company table
+        cursor.execute("CREATE TABLE IF NOT EXISTS Company (id INT AUTO_INCREMENT PRIMARY KEY, customer_id INT, Company VARCHAR(255), FOREIGN KEY (customer_id) REFERENCES customers_id(id))")
+
+        # Create Status table
+        cursor.execute("CREATE TABLE IF NOT EXISTS Status (id INT AUTO_INCREMENT PRIMARY KEY, customer_id INT, Status VARCHAR(255), FOREIGN KEY (customer_id) REFERENCES customers_id(id))")
+
+        # Create Risk table
+        cursor.execute("CREATE TABLE IF NOT EXISTS Risk (id INT AUTO_INCREMENT PRIMARY KEY, customer_id INT, Risk VARCHAR(255), FOREIGN KEY (customer_id) REFERENCES customers_id(id))")
+
         cursor.execute("DESCRIBE customers_id")
         column_names = [column[0] for column in cursor.fetchall()]
 
@@ -41,7 +66,7 @@ class DB():
         if "Risk" not in column_names:
             cursor.execute("ALTER TABLE customers_id ADD COLUMN Risk VARCHAR(255)")
 
-        with open(r'C:\Users\user\Documents\DB_Encryption\output\decryptedData.json') as f:
+        with open(r'C:\Users\oem\Documents\DB_Encryption\output\decryptedData.json') as f:
             data = json.load(f)
             for key in data:
                 record = data[key]
