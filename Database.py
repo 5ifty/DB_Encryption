@@ -7,7 +7,7 @@ class DB():
         self.connection = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='BD9vyfrx',
+            password='',
             database='collegedatabase'
         )
         if self.connection.is_connected():
